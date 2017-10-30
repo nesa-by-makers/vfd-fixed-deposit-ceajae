@@ -13,20 +13,20 @@
 
     echo 'We have connectes oh!';
 
-    $fullname = $_POST['fullName'];
-    $phonenumber = $_POST['phoneNumber'];
-    $residentAddress = $_POST['residentAddress'];
-    $occupation = $_POST['occupation'];
-    $officeAddress = $_POST['officeAddress'];
-    $duration = $_POST['proposedDuration'];
-    $amount = $_POST['amount'];
-    $accountNumber = $_POST['accountNumber'];
-    $accountName = $_POST['accountName'];
-    $bankName = $_POST['bankName'];
-    $kinName = $_POST['kinName'];
-    $kinNumber = $_POST['kinNumber'];
-    $kinEmail = $_POST['kinEmail'];
-    $reference = $_POST['reference'];
+    $fullname = mysqli_real_escape_string($connection,$_POST['fullName']);
+    $phonenumber = mysqli_real_escape_string($connection,$_POST['phoneNumber']);
+    $residentAddress = mysqli_real_escape_string($connection,$_POST['residentAddress']);
+    $occupation = mysqli_real_escape_string($connection,$_POST['occupation']);
+    $officeAddress = mysqli_real_escape_string($connection,$_POST['officeAddress']);
+    $duration = mysqli_real_escape_string($connection,$_POST['proposedDuration']);
+    $amount = mysqli_real_escape_string($connection,$_POST['amount']);
+    $accountNumber = mysqli_real_escape_string($connection,$_POST['accountNumber']);
+    $accountName = mysqli_real_escape_string($connection,$_POST['accountName']);
+    $bankName = mysqli_real_escape_string($connection,$_POST['bankName']);
+    $kinName = mysqli_real_escape_string($connection,$_POST['kinName']);
+    $kinNumber = mysqli_real_escape_string($connection,$_POST['kinNumber']);
+    $kinEmail = mysqli_real_escape_string($connection,$_POST['kinEmail']);
+    $reference = mysqli_real_escape_string($connection,$_POST['reference']);
 
 
 
@@ -36,9 +36,7 @@
 
     if($connection->query($customerQuery) === true){
         $newCustomerID = $connection->insert_id;
-        echo "new customer inserted successfully";
-
-        echo "new customer id ".$newCustomerID;
+        echo "new customer inserted successfully with ID ".$newCustomerID;
     }else{
         echo "Somehting bad happened-".$connection->error;
     }
